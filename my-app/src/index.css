@@ -1,0 +1,9 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(320deg, lightskyblue, rgb(97, 172, 218), rgb(25, 108, 160));
+  min-height: 100vh;
+}
+h1{
+  color: rgb(228, 181, 93);
+  text-shadow: 1px 1px 2px rgb(119, 93, 7);    
+  }
