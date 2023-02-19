@@ -2,40 +2,49 @@ import PropTypes from 'prop-types';
 import './Weather.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Search from './Search';
 
 
-function Weather({city, zipcode}) {
+function Weather() {
     const [temperature, setTemperature] = useState('-')
     const [icon, setIcon] = useState('-')
+    const [search, setSearch] = useState('75000')
+    const [city, setCity] = useState('Paris')
+    
 
     const apiKey = process.env.REACT_APP_APIKEY;
     const apiUrl = process.env.REACT_APP_APIURL;
-    const url = `${apiUrl}?zip=${zipcode},fr&appid=${apiKey}&units=metric`
+    const url = `${apiUrl}?zip=${search},fr&appid=${apiKey}&units=metric`
     console.log(url)
-
+    
 
     const fetchWeather = async() => {
-      const result = await axios.get(`${apiUrl}?zip=${zipcode},fr&appid=${apiKey}&units=metric`);
+      const result = await axios.get(`${apiUrl}?zip=${search},fr&appid=${apiKey}&units=metric`);
       console.log(result.data.main.temp)
         setTemperature(result.data.main.temp)
         setIcon(result.data.weather[0].icon);
-      };
+        setCity(result.data.name)
+        console.log(result.data.name)
+             };
     
       useEffect(() => {
         fetchWeather();
       }, []);
     
       return (
-        <div className="meteo">
+        <>
+        <Search search={search} setSearch={setSearch} fetchWeather={fetchWeather} />
+        <div className="meteo" > 
           <div>
             <div className="meteo-city">{city}</div>
-            <div className="meteo-code">{zipcode}</div>
+            <div className="meteo-code">{search}</div>
             <div className="meteo-temperature">
               {temperature}°
             </div>
           </div>
                 <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon" />
         </div>
+        </>  
       )
 }
 
