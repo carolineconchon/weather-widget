@@ -6,10 +6,10 @@ import Search from './Search';
 
 
 function Weather() {
-    const [temperature, setTemperature] = useState('-')
-    const [icon, setIcon] = useState('-')
-    const [search, setSearch] = useState('75000')
-    const [city, setCity] = useState('Paris')
+    const [temperature, setTemperature] = useState('17')
+    const [icon, setIcon] = useState('02n')
+    const [search, setSearch] = useState('')
+    const [city, setCity] = useState('Bourg Palette')
     
 
     const apiKey = process.env.REACT_APP_APIKEY;

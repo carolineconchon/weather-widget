@@ -8,9 +8,9 @@ function Search ({search, setSearch, fetchWeather}){
             fetchWeather();
             event.preventDefault();
            }}>  
-                <label for="search">Ton code postal: </label>
+                <label className="search">Entre ton code postal: </label>
                 <input className='input'
-                    placeholder='entre ton code postal et appuie sur entrée'
+                    placeholder='et appuie sur entrée'
                     value={search}
                     onChange={(event) => {
                     setSearch(event.target.value);
